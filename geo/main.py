@@ -5,6 +5,7 @@ import subprocess
 import sys
 import re
 from flask import Flask
+from flask_pushjack import FlaskAPNS
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
@@ -15,6 +16,8 @@ re_freq = re.compile("\s+Frequency:(\S+) GHz")
 re_qual = re.compile("\s+Quality=(\S+)  Signal level=(\S+) dBm")
 re_essid = re.compile("\s+ESSID:\"([^\"]+)\"")
 
+# config = {'APNS_CERTIFICATE': '/home/root/entrust_root_certification_authority.pem'}
+config = {'APNS_CERTIFICATE': '/home/root/dev_push.pem'}
 
 class AP:
     def __init__(self, mac_address=None, channel=None, frequency=None, quality=None, signal=None, essid=None):
@@ -74,6 +77,10 @@ def find_geolocation():
 
 # App definition
 app = Flask(__name__)
+app.config.update(config)
+
+client = FlaskAPNS()
+client.init_app(app)
 
 @app.route("/")
 def hello():
@@ -84,7 +91,35 @@ def loc():
     lat, lng = find_geolocation()
     return "{} {}".format(lat, lng)
 
+@app.route("/nearby")
+def nearby():    
+    import mraa
+    import time
+    x = mraa.Gpio(13)
+    pin1 = mraa.Gpio(9)
+    pin2 = mraa.Gpio(10)
+    x.dir(mraa.DIR_OUT)
+    pin1.dir(mraa.DIR_OUT)
+    pin2.dir(mraa.DIR_OUT)
+    for i in range(40):
+        x.write(1)
+        pin1.write(1)
+        pin2.write(0)
+        time.sleep(1)
+        pin1.write(0)
+        pin2.write(0)
+        x.write(0)
+        time.sleep(1)
+
 if __name__ == '__main__':
     assert GOOGLE_API_KEY is not None, "GOOGLE_API_KEY must be set."
+    #with app.app_context():
+    #    res = client.send("afb5c4ff3c153dbe30a3a04ee168030f5b5d786035f629779ad999af3786a697", "hello world!")
+    #    print res.tokens
+    #    print res.errors
+    #    print res.token_errors
     app.run(host='0.0.0.0', port=80)
+
+
+
 
