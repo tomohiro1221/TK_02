@@ -1,0 +1,10 @@
+PODS:
+  - WebPay (2.0.2)
+
+DEPENDENCIES:
+  - WebPay (~> 2.0.2)
+
+SPEC CHECKSUMS:
+  WebPay: 292660eaea3e2625c8c602d8616f74585aab5222
+
+COCOAPODS: 0.39.0

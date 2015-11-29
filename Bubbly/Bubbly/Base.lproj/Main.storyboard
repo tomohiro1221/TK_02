@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--Launch View Controller-->
+        <scene sceneID="7qo-Po-IAa">
+            <objects>
+                <viewController id="XWP-Dr-lj5" customClass="LaunchViewController" customModule="Bubbly" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eIS-LZ-cY7"/>
+                        <viewControllerLayoutGuide type="bottom" id="eNZ-h7-SAO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1bg-Pm-xhW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_00119.png" translatesAutoresizingMaskIntoConstraints="NO" id="22F-me-Y76">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="22F-me-Y76" firstAttribute="bottom" secondItem="eNZ-h7-SAO" secondAttribute="top" id="bcW-W7-O1p"/>
+                            <constraint firstItem="22F-me-Y76" firstAttribute="top" secondItem="1bg-Pm-xhW" secondAttribute="top" id="ds3-Ga-dfi"/>
+                            <constraint firstAttribute="trailing" secondItem="22F-me-Y76" secondAttribute="trailing" id="onp-ns-Qt5"/>
+                            <constraint firstItem="22F-me-Y76" firstAttribute="leading" secondItem="1bg-Pm-xhW" secondAttribute="leading" id="qOJ-5t-Atj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="22F-me-Y76" id="vEk-Iq-l3j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64Q-fz-edO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350" y="178"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="viewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Bubbly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artist.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-T9-cXi">
+                                <rect key="frame" x="180" y="86" width="240" height="240"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="iUY-tR-uLU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APE-hf-iOS">
+                                <rect key="frame" x="266" y="352" width="69" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VfN-GQ-B0I"/>
+                                    <constraint firstAttribute="width" constant="69" id="caA-a4-H3q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ke7-Qo-x7q">
+                                <rect key="frame" x="270" y="423" width="60" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AUD-7X-HAf"/>
+                                </constraints>
+                                <state key="normal" title="応援する"/>
+                                <connections>
+                                    <action selector="pushPayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3b-GN-BBb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="APE-hf-iOS" firstAttribute="centerX" secondItem="ke7-Qo-x7q" secondAttribute="centerX" id="3W7-es-Vbp"/>
+                            <constraint firstItem="ke7-Qo-x7q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6CF-Vq-CtR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ke7-Qo-x7q" secondAttribute="bottom" constant="147" id="HpW-kZ-n7w"/>
+                            <constraint firstItem="APE-hf-iOS" firstAttribute="centerX" secondItem="fBV-T9-cXi" secondAttribute="centerX" id="RM0-po-okc"/>
+                            <constraint firstItem="APE-hf-iOS" firstAttribute="top" secondItem="fBV-T9-cXi" secondAttribute="bottom" constant="26" id="SgG-vZ-hCS"/>
+                            <constraint firstItem="ke7-Qo-x7q" firstAttribute="top" secondItem="APE-hf-iOS" secondAttribute="bottom" constant="50" id="cqJ-wr-uef"/>
+                            <constraint firstItem="fBV-T9-cXi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="cv2-OY-m9n"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="408" y="178"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="artist.jpg" width="486" height="324"/>
+        <image name="logo_00119.png" width="1242" height="2208"/>
+    </resources>
+</document>
