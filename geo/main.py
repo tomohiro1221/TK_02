@@ -4,6 +4,7 @@ import json
 import subprocess
 import sys
 import re
+from flask import Flask
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
@@ -56,11 +57,10 @@ class AP:
                 access_points.append(ap)
         return access_points
 
-if __name__ == '__main__':
-    assert GOOGLE_API_KEY is not None, "GOOGLE_API_KEY must be set."
 
+def find_geolocation():
     aps = AP.scan_access_points()
-
+    
     url = "https://www.googleapis.com/geolocation/v1/geolocate?key=" + GOOGLE_API_KEY
     headers = {"Content-Type": "application/json"}
     data = {
@@ -68,8 +68,23 @@ if __name__ == '__main__':
             {"macAddress": ap.mac_address, "signalStrength": ap.signal, "channel": ap.channel} for ap in aps
         ]
     }
-
     res = requests.post(url, headers=headers, json=data)
     geo = res.json()
-    print geo
+    return geo['location']['lat'], geo['location']['lng']
+
+# App definition
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello world!"
+
+@app.route("/loc")
+def loc():
+    lat, lng = find_geolocation()
+    return "{} {}".format(lat, lng)
+
+if __name__ == '__main__':
+    assert GOOGLE_API_KEY is not None, "GOOGLE_API_KEY must be set."
+    app.run(host='0.0.0.0', port=80)
 
